@@ -6,4 +6,4 @@ GoFetch is a command line tool written in golang, the purpose of this program is
 after executing program for the first time, you can change the image by modify file in `$HOME/.config/gofetch/config.json
 
 ## Screen Shot
-![](Pasted%20image%2020220529221507.png)
+![](Sample_Image/Pasted%20image%2020220529221507.png)
