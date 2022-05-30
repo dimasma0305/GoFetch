@@ -20,6 +20,7 @@ func main() {
 	// print the image
 	clear_screen_full()
 	image_loc := get_image_location()
+	// fmt.Print(templete(1)) // image location
 	fmt.Printf("%s", display_image(
 		image_loc,
 		35,

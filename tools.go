@@ -45,7 +45,7 @@ func display_image(location string, width int, height int) []byte { // display i
 	width_str := strconv.Itoa(width)
 	height_str := strconv.Itoa(height)
 	// display an image using chafa
-	cmd := exec.Command("chafa", location, "--stretch", fmt.Sprintf("--size=%sx%s", width_str, height_str))
+	cmd := exec.Command("chafa", location, fmt.Sprintf("--size=%sx%s", width_str, height_str))
 	out, err := cmd.Output()
 	if err != nil {
 		fmt.Println("Error:", err)
