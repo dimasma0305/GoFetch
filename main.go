@@ -5,9 +5,9 @@ import (
 )
 
 func main() {
-	//################################################################################
-	//#                                 preparation                                  #            
-	//################################################################################
+	//##########################################################################
+	//#                              preparation                               #
+	//##########################################################################
 
 	// checking
 	check_os()
@@ -27,27 +27,27 @@ func main() {
 		14,
 	))
 	clear_screen()
-	
-	//################################################################################
-	//#                              prepare variables                               #                  
-	//################################################################################
-	
+
+	//##########################################################################
+	//#                           prepare variables                            #
+	//##########################################################################
+
 	// Hardware Information
-	computer_brand 	:= get_computer_brand()
-	cpu_info 		:= get_cpu_info("model name")
-	memory_total 	:= kb_to_gb(get_mem_info("MemTotal"))
-	memory_used 	:= kb_to_gb(
+	computer_brand := get_computer_brand()
+	cpu_info := get_cpu_info("model name")
+	memory_total := kb_to_gb(get_mem_info("MemTotal"))
+	memory_used := kb_to_gb(
 		int2str(
-			str2int(get_mem_info("MemTotal")) - 
-			str2int(get_mem_info("MemFree")) - 
-			str2int(get_mem_info("Buffers")) -
-			str2int(get_mem_info("Cached")),
+			str2int(get_mem_info("MemTotal")) -
+				str2int(get_mem_info("MemFree")) -
+				str2int(get_mem_info("Buffers")) -
+				str2int(get_mem_info("Cached")),
 		),
 	)
 	memory_percent := percent(memory_used, memory_total)
 	vga_series := get_vga_series()
 	monitor_size := get_monitor_size()
-	
+
 	// Software Information
 	host_name := get_host_name()
 	distro := get_distro()
@@ -70,22 +70,47 @@ func main() {
 	icon_shell_name := color_templete("", 7)
 	icon_session := color_templete("", 7)
 
-	//################################################################################
-	//#                              print to terminal                               #                  
-	//################################################################################
-	
-	fmt.Print(template);fmt.Println(bold(coloring(" "+header+" ", "#c3c7d1")))
-	fmt.Print(template);fmt.Println(coloring(bold("┌───────── Hardware Information ─────────┐"), "828997"))
-	fmt.Print(template);fmt.Printf(	" %s  %s\n", icon_computer_brand, computer_brand)
-	fmt.Print(template);fmt.Printf(	" %s  %s\n", icon_cpu_info, cpu_info)
-	fmt.Print(template);fmt.Printf(	" %s %s / %s (%s)\n", 	icon_memory_total, memory_used, memory_total, memory_percent)
-	fmt.Print(template);fmt.Printf(	" %s  %s\n", icon_vga_series, vga_series)
-	fmt.Print(template);fmt.Printf(	" %s  %s\n", icon_monitor_size, monitor_size)
-	fmt.Print(template);fmt.Println(coloring(bold("├──────── Software Information ──────────┤"), "828997"))
-	fmt.Print(template);fmt.Printf( " %s  %s\n", icon_distro, distro)
-	fmt.Print(template);fmt.Printf( " %s  %s\n", icon_kernel_version, kernel_version)
-	fmt.Print(template);fmt.Printf( " %s  %s\n", icon_shell_name, shell_name)
-	fmt.Print(template);fmt.Printf( " %s  %s\n", icon_session, session)
-	fmt.Print(template);fmt.Println(coloring(bold("└────────────────────────────────────────┘"), "828997"))
-	fmt.Print(template);fmt.Println("      "+get_teminal_color_palette())
+	//##########################################################################
+	//#                           print to terminal                            #
+	//##########################################################################
+
+	fmt.Print(template)
+	fmt.Println(bold(coloring(" "+header+" ", "#c3c7d1")))
+	fmt.Print(template)
+
+	fmt.Println(
+		coloring(bold("┌───────── Hardware Information ─────────┐"), "828997"))
+	fmt.Print(template)
+	fmt.Printf(" %s  %s\n", icon_computer_brand, computer_brand)
+	fmt.Print(template)
+	fmt.Printf(" %s  %s\n", icon_cpu_info, cpu_info)
+	fmt.Print(template)
+	fmt.Printf(
+		" %s %s / %s (%s)\n",
+		icon_memory_total,
+		memory_used,
+		memory_total,
+		memory_percent)
+	fmt.Print(template)
+	fmt.Printf(" %s  %s\n", icon_vga_series, vga_series)
+	fmt.Print(template)
+	fmt.Printf(" %s  %s\n", icon_monitor_size, monitor_size)
+	fmt.Print(template)
+
+	fmt.Println(
+		coloring(bold("├──────── Software Information ──────────┤"), "828997"))
+	fmt.Print(template)
+	fmt.Printf(" %s  %s\n", icon_distro, distro)
+	fmt.Print(template)
+	fmt.Printf(" %s  %s\n", icon_kernel_version, kernel_version)
+	fmt.Print(template)
+	fmt.Printf(" %s  %s\n", icon_shell_name, shell_name)
+	fmt.Print(template)
+	fmt.Printf(" %s  %s\n", icon_session, session)
+	fmt.Print(template)
+
+	fmt.Println(
+		coloring(bold("└────────────────────────────────────────┘"), "828997"))
+	fmt.Print(template)
+	fmt.Println("      " + get_teminal_color_palette())
 }
